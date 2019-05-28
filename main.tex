@@ -1,0 +1,2167 @@
+\documentclass[UTF8,12pt,a4paper]{article}
+\usepackage{xeCJK}
+\usepackage{tocloft}
+\usepackage{CJKutf8}
+\usepackage[unicode]{hyperref}
+\usepackage{fontspec} % use to set font
+\usepackage{xeCJK} % seperate the english and chinese
+\usepackage{color}
+\usepackage{framed}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{datetime}
+\usepackage{geometry}
+\usepackage{placeins}
+\usepackage{multicol}
+
+\setCJKmainfont{SimSun}
+\XeTeXlinebreaklocale "zh"  % Auto linebreak for chinese
+\XeTeXlinebreakskip = 0pt plus 1pt % Auto linebreak for chinese
+
+\geometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\usetikzlibrary{decorations.pathmorphing,calc}
+\pgfmathsetseed{1}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzset{
+  normal border/.style={orange!30!black!10, decorate,
+     decoration={random steps, segment length=2.5cm, amplitude=.7mm}},
+  torn border/.style={orange!30!black!5, decorate,
+     decoration={random steps, segment length=.5cm, amplitude=1.7mm}}}
+
+\def\parchmentframe#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};  % Draw the text of the node
+ \begin{pgfonlayer}{background}  % Draw the shape behind
+ \fill[normal border]
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \end{pgfonlayer}}}
+
+\def\parchmentframetop#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};    % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]              % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]                % Add the torn lower border
+       ($(A.south east)-(0,.2)$) -- ($(A.south west)-(0,.2)$) --
+       ($(A.south west)+(0,.2)$) -- ($(A.south east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\def\parchmentframemiddle#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};   % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]             % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]               % Add the torn lower border
+       ($(A.south east)-(0,.2)$) -- ($(A.south west)-(0,.2)$) --
+       ($(A.south west)+(0,.2)$) -- ($(A.south east)+(0,.2)$) -- cycle;
+ \fill[torn border]               % Add the torn upper border
+       ($(A.north east)-(0,.2)$) -- ($(A.north west)-(0,.2)$) --
+       ($(A.north west)+(0,.2)$) -- ($(A.north east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\newenvironment{parchment}[1][Example]{%
+ \def\FrameCommand{\parchmentframe}%
+ \def\FirstFrameCommand{\parchmentframetop}%
+ \def\LastFrameCommand{\parchmentframebottom}%
+ \def\MidFrameCommand{\parchmentframemiddle}%
+ \vskip\baselineskip
+ \MakeFramed {\FrameRestore}
+ \noindent\tikz\node[inner sep=1ex, draw=black!20,fill=white,
+         anchor=west, overlay] at (0em, 2em) {\sffamily#1};\par}%
+{\endMakeFramed}
+
+\def\parchmentframebottom#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};   % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]             % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]               % Add the torn upper border
+       ($(A.north east)-(0,.2)$) -- ($(A.north west)-(0,.2)$) --
+       ($(A.north west)+(0,.2)$) -- ($(A.north east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\title{南京大学计算机科学与技术系2019届硕士生毕业纪念簿}
+
+\setcounter{secnumdepth}{0}
+\begin{document}
+% \begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{2019.png}
+\end{figure}
+\newpage
+\begin{multicols}{3}
+  \begingroup
+    \hypersetup{hidelinks}
+    \tableofcontents
+  \endgroup
+\end{multicols}
+\newpage
+
+%###HEREISYOURCODE###
+
+%\end{document}
+
+    \section{陈东东}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_陈东东/photo/328.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿你永远保持内心的少年感，无论是否走出半生，无论是否归来校园。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 15062285720
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{丁顺杰}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{default.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    海内存知己，天涯若比邻。
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 17768102791
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{岳义盛}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_岳义盛/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿心如赤子，愿身行远方
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话:18661209081
+\item 邮箱:abelyys@foxmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{周至}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_周至/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    毕业告别，此去年年，彼此珍重，有缘再见。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15950569968
+\item QQ：527195016
+\item 微信：zhouzhi\_0929
+\item 邮箱：njucs2012\_zz@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{邓靖}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_邓靖/IMG_0034.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    如果你愿意的话，让我带你去吧，这座小镇，愿望实现的地方。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15950560711
+\item 微信号：D\_memo
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张晗}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{default.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家前程似锦！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 15851816885
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{郁裕杰}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_郁裕杰/IMG_4099(20190516-195355).jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    苟富贵，勿相忘！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13255292229
+\item 邮箱：627525301@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{冯京浩}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_冯京浩/个人生活照.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    四年又三年，终于毕业啦！祝大家前程似锦，事业有成，生活幸福美满！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18020143953
+\item 邮箱：fengjinghao14@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{周文吉}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_周文吉/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    励学敦行，回首不负韶华，
+把酒言欢，临别何须赠言。
+整装待发，转身便至江湖，
+千帆过尽，归来仍是少年。
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱:1206624379@qq.com
+\item 电话:15996207871
+\item 微信:AlexZ2015
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{徐鹏飞}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_徐鹏飞/照片/IMG_4232.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    兄弟姐妹们常联系哟~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item tel：18851823929
+\item v：SleepyVincent
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{姜茜}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_姜茜/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    前程似锦! 财富自由!
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 微信 piankejingmo
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李恒毅}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_李恒毅/照片/sister-2.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    很幸运可以认识你们，很感恩三年里度过的美好时光，祝愿所有小伙伴在未来每一天平安快乐！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item email:hengyili0214@gmail.com
+\item QQ:513516487
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张纯龙}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_张纯龙/照片/微信图片_20190515184441.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    硕士三年，江湖再见。人生的下一阶段，一定要活得精彩。
+
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机\&微信：13182820112
+\item QQ：1024734965
+\item 邮箱：1024734965@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈旭}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_陈旭/陈旭_MG1633009.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    今日告别过去，明日拥抱未来，希望大家明天会更好！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机号:15950561378
+\item 邮箱：chenxxu@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张辉}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_张辉/张辉_照片2.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+             人生·江湖
+天下风云出我辈，一入江湖岁月催。
+皇图霸业谈笑中，不胜人生一场醉。
+提剑跨骑挥鬼雨，白骨如山鸟惊飞。
+尘事如潮人如水，只叹江湖几人回。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱1：2528558197@qq.com
+\item 邮箱2：jackzhangseu@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王嘉时}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_王嘉时/王嘉时.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    研究生像是从学校到社会之间的中转站，我很幸运在这个中转站里进入了328这个小房间，希望我们10年都都会变成自己想成为的人。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 13218011136
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{郭瑞军}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_郭瑞军/照片/男_郭瑞军_生活照2.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿大家发际线永不认输！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 姓名：郭瑞军
+\item 电话：15950579658
+\item Email：cruijunguo@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{严欣雨}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_严欣雨/照片/DSC05841.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家毕业快乐，前程似锦！往后的生活万事顺意，赚钱的同时保重身体！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：13002506861
+\item 邮箱：512118546@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李昊轩}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_李昊轩/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    幸福地生活吧！ [1]
+[1] [奥]维特根斯坦：《战时笔记（1914-1917）》，韩林合译，商务印书馆2013年版，哲学部分 MS103 772.
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 13312050360
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张晨羽}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_张晨羽/照片/20160614_104201.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家万事顺意，永不脱发！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15996208582
+\item 邮箱：nju\_zcy@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李昀}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_李昀/照片/女_李昀_生活照1.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    留言 李昀
+
+青山不改，绿水长流，后会有期。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 联系方式 李昀
+\item 电话 15996208581
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈洁}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_陈洁/IMG_2025.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿有前程可奔赴，亦有岁月可回首~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 联系方式：
+\item 手机：15950557108
+\item 邮箱：jeffchen328@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{解铮}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男-解铮/DSC04978.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝自己早日博士毕业🤦‍♂️
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item Wechat Xie\_Zheng
+\item Tel 15605195337
+\item Mail xie.zheng777@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{余锋根}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_余锋根/照片/生活照2.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    青山依在，绿水长流，朋友，我们有缘再见！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 15950582095
+\item yufg\_nju@foxmail.com
+\item 微信：yfgcmq
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{程大卫}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_程大卫/picture.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    努力奋斗，早日买房/dog
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 15950573266
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{蔡昕辰}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_蔡昕辰/cf28746504c2256efa3bd7138324df3.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    做人呢，开心最重要
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item QQ: 380750223
+\item 邮箱：smldcxx@126.com
+\item 微信号：airsola0711
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{董坚}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_董坚/照片/4.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+        三年的时间转瞬即逝，转眼间我们又将迎来人生的下一个分岔路口。感谢大家一起走过的这段时光，
+也感谢实验室的老师们和同学们对我的指导和帮助。在南大期间，我学到了坚实的专业知识和科学的探
+索精神。愿友谊长存，愿母校越来越好。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：15651628062
+\item 邮箱：454376346@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{刘慎明}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_刘慎明/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    感谢大家三年来的陪伴，愿大家一切顺利！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 277384141@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李珍珠}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/女_李珍珠/照片/picture.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    缘聚南大，已近三载，今夕离别，惟有三愿：
+一愿世清平，二愿身强健，三愿临老头，数与君相见。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item Emali：lzznju@163.com
+\item 微信号：zhuzhu\_only
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{曹阳}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_曹阳/照片.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝诸位：如月之恒，如日之升。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：18651426727
+\item 微信：Cyber0002
+\item 邮箱：cycpp0002@163.com
+\item QQ：493798101
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张公铎}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class1/男_张公铎/照片/微信图片_20190509144635.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    聚是一团火，散是满天星。
+祝大家前程似锦，有缘再相见~~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机和微信：15851813978
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李波}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_李波/照片/IMG_8644.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    时间可以证明一切，时间可以改变一切，时间可以解释一切，时间可以成就一切。
+三年的时间，想想很长，过起来却是如此短暂，往昔依旧，砥砺前行，祝愿各位都会拥抱一个不会令自己后悔的未来。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话:
+\item 18362963313
+\item 邮箱:
+\item 245939069@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{邱昊楠}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_邱昊楠/邱昊楠.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    但行好事，莫问前程。
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机号：15050555962
+\item 邮箱：979576490@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{高宋城}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_高宋城/WechatIMG1.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    相逢又告别，归帆又离岸，既是往日快乐的终结，又是未来幸福的开端。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：18851826922
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{闫梦奎}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_闫梦奎/闫梦奎.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    Seize the day!
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：yanmengk@foxmail.com
+\item 手机：15380926653
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{沈宇桔}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_沈宇桔/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    以梦为马，不负……
+等等，我的梦想好像是当一条咸鱼？
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：15861812223
+\item 邮箱：denny.syj@hotmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{管文杰}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_管文杰/生活照.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    且行且珍惜
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 907239043@qq.com
+\item 18362961579
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{宋蓓}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_宋蓓/照片/20181010_IMG_5282.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家都能过上自己想要的生活~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：songbei07@gmail.com
+\item 手机：13770573697
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{邵菲}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_邵菲/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    尚未佩妥剑,转眼便江湖。愿历尽千帆,归来仍少年。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item sophienj819@163.com
+\item 15950582060
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王梓轩}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_王梓轩/王梓轩.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    相濡以沫，不如相忘于江湖。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item snwzx@126.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{刘小雪}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_刘小雪/照片/搞怪.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    杨絮飘飞，又到了说再见的时候。祝大家前程似锦，未来的日子如风一般自由快乐~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱： 1652409248@qq.com
+\item 手机： 17327762919
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{黎一泽}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_黎一泽/黎一泽.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    我们走，同学们！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：602298461@qq.com
+\item 手机：15850776828
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{苏一凡}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_苏一凡/TIM图片20190218121631.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝各位发际线和发量永驻~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 15922011199 15922011199@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李春游}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男-李春游/李春游.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    希望大家在未来漫漫人生中平安幸福，事业有成。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item qq:2695928308
+\item 电话：15005162598
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{杜震}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_杜震/杜震.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    毕业快乐，未来可期。
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机号：18261930353
+\item 邮箱：du\_allan@126.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{沈大川}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_沈大川/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家前程似锦，年薪百万不加班！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：179019448@qq.com
+\item 手机：15950561255
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{季志祥}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_季志祥/个人生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    海阔凭鱼跃，天高任鸟飞！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：jzx\_forever@126.com
+\item 手机：15950560528
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{宋阳}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_宋阳/个人生活照.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    毕业快乐，前程似锦！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item songyangnju@hotmail.com
+\item 15950561358
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈港}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_陈港/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝一切顺利，前程似锦
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：chengangddu@163.com
+\item 手机：18362962672
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{侯文博}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_侯文博/侯文博.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    嘿兄弟，我们好久不见你在哪里
+
+嘿朋友，如果真的是你请打招呼
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 438656247@qq.com
+\item 15005162319
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{沈佳凯}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_沈佳凯/沈佳凯.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    澹泊之守，须从秾艳场中试来；镇定之操，还向纷纭境上勘过。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item water799@126.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{施林锋}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_施林锋/施林锋.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    希望大家未来都能够顺顺利利，前程似锦~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：sxqqslf@163.com
+\item 手机：15195992470
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{胡天萍}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_胡天萍/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    再见，金陵。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：1020006504@qq.com
+\item 手机：15366036129
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{胡求}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/男_胡求/huqiu.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    去矣多年求学日，吾辈当展壮志时。祝各位同学前程似锦，生活愉快！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item huqiu00@163.com
+\item 18851823759
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{侯琦}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class2/女_侯琦/照片/个人生活照_侯琦.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    毕业啦！祝大家未来可期，前程似锦！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 1160575518@qq.com
+\item 13236539278
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{宛袁玉}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_宛袁玉/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家毕业快乐，事业有成；祝计算机系越来越好！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：wanyy9@gmail.com
+\item 手机：13072552253
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张可心}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/女_张可心/照片/20180125_IMG_4879.JPG}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    留言：感谢南京大学，感谢在南大遇见的所有老师朋友，衷心祝愿大家在各自未来的人生道路上平安喜乐，永远幸福，期待再见！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 学号：MG1633098
+\item 手机：15005161627
+\item 邮箱：claireikx@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王之隆}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_王之隆/照片.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    海内存知己，天涯若比邻。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item QQ:2395845334
+\item 微信:2395845334
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{唐思雨}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/女_唐思雨/唐思雨MF1633040.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    十分努力，十分幸运，愿不被生活辜负
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 联系方式：605841694@qq.com
+\item 手机号：13236537718
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{樊磊}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_樊磊/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    人纷飞，爱相随
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 13675108151
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{龚银银}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/女_龚银银/照片/龚银银.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿归来仍是少年
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 13770571079
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张云峰}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_张云峰/生活照-张云峰.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    留言：生活工作不易，坚持自我更难，望不被打到
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item Email: 511103433@qq.com
+\item Tel: 15062281703
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王岚}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/女_王岚/Õı·∞.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝各位乘风破浪，拥有精彩人生。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 王岚 13218028298 wanglanlemon@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{赵扬}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_赵扬/生活照_赵扬_MG1633105.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    留言：在南大的三年让我认识到了什么是科研，受益匪浅，愿南大计算机的科研实力越来越好！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 联系方式：youngzh1993@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{汪笑宇}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/女_汪笑宇/照片_汪笑宇.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝福：毕业季，祝福递；莫伤离，互珍惜；同学情，记心底；忆往昔，美好记；前路广，愿顺利；天涯离，难相聚；好朋友，多联系！愿大家毕业快乐，前程似锦！有事常联系！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 邮箱：wangxiaoy51448@126.com
+\item 手机：18962195692
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王成}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_王成/照片/照片.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    珍惜年华，把握每一天。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机号：15651667065
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王文海}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_王文海/王文海.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿诸君前程似锦。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item wangwenhai362@163.com（邮箱）
+\item 18362960936（手机）
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李悦}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class3/男_李悦/MF1633021_李悦.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    404 NOT FOUND
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：13770681657
+\item QQ：1449222839
+\item 微信：liyue-920716
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{葛高坚}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_葛高坚_MF1633010/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    六月的时光充满欢笑，完美的前途在我们眼前闪耀；六月的时光充满泪水，三年相聚一朝分别怎不令人泪花涛涛。毕业季来了，让我们把友谊收藏，去创造明天的完美！祝前程似锦，生活快乐！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：13255288200
+\item 邮箱：gegaojian.richard@outlook.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{吴雪榕}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_吴雪榕_MF1633049/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    江湖路远，有缘再见啦
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15062262783
+\item 邮箱：403054326@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈亮强}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_陈亮强_MG1633006/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    在南大的生活中磨炼与收获并存，希望母校和计算机系的发展越来越好，祝愿身边的老师和同学们活得精彩，且行且珍惜！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18851822667
+\item 邮箱：420087213@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张旭}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张旭_MF1633068/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    青春岁月铭刻着我们的影子，欢乐时光记忆着我们的笑容。毕业了，短暂的告别是让我们相会在成功的路上。朋友们，后会有期，未来精彩！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15077856518
+\item 邮箱：670146901@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{李志凯}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_李志凯_MF1633023/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    青山不改，绿水长流。愿诸君能知己所欲，终获己所求，他日再见时，无悔亦无忧。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15050556350
+\item 邮箱：287540573@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王远}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_王远_MF1633044/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    Each one of us will have a bright future!
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13770680971
+\item 邮箱：yeahyuanwang@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{魏浩然}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_魏浩然_MF1633046/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    研究生这三年，也许是最后一段996却乐此不疲的日子。祝愿在毕业后的生活中，大家都能找到自己的work-life balance。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13770300014
+\item 邮箱：whr94621@foxmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张皓}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张皓_MF1633063/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    ﻿刚来计算机系的时候总有点怕怕的，觉得计算机系中藏龙卧虎，写代码如探囊取物。接触的时间久了，渐渐被计算机系老师和同学们的科研和敬业精神震撼到。有的老师授课亲自编写讲义或教材，打造世界一流标准，节假日时间很多自愿来到办公室工作，工作时间长都不止996。有次正好遇到很多学生奋战了一夜早上出系楼大门去吃早饭。这或许就是国家重点实验室能连续三年保持同行业第一的原因吧。
+    读研过程中经常需要自己探索很多。我发现，对一件事物或一个概念，能自己看懂是一回事，能写下来别人看懂是另一回事，能面对面口头地简明扼要的讲懂是另一回事。对于我自己，光看别人写的东西时间长了就不记得了，于是我自己开始作一些写作和整理，公众号或者知乎有评论说我的文章很有帮助，但实际上受帮助最大的是我自己。于是我一直坚持了这个过程。
+    最后，感谢计算机系的老师和同学们。祝计算机系未来能以出神入化之功，收出类拔萃之效。祝各位同学前程似锦、马到成功、早日成为各行业有国际视野的领军人才！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话: 15950572100
+\item 邮箱：zhangh0214@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{孙东旭}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_孙东旭_MF1633037/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    三年研究生时光，我准备好成为一个社会人了！感恩南大，感恩顽强奋进的自己！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18973089012
+\item 邮箱：371211947@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{经伟}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_经伟_MF1633019/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    努力工作，认真生活。勿失今日之朝气，勿忘长久之抱负。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：18083793980
+\item 邮箱：374165072@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{刘茜}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_刘茜_MF1633025/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    不忘初心，方得始终，希望大家无论在哪里，都能一帆风顺，万事胜意！
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15150512208
+\item 邮箱：liu6qian0@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{孟周宇}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_孟周宇_MF1633030/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    转眼间，研究生生涯就要结束了，在这期间我交到了很多志同道合的朋友，同时也遇到了很多有趣、善良的同学，让我的人生中多出了精彩的一页。毕业是一个阶段的结束和另一个阶段的开始，毕业后我们将去各地施展自己的才华，愿大家都有光辉的前途、能够实现自己的梦想！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15205164325
+\item 邮箱：290136130@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{武鹏}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_武鹏_MF1633050/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    毕业快乐，祝我快乐，这里的生活挺好的！---改编自《分手快乐》
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：13770681927
+\item 邮箱：wudapeng268@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张所昊}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张所昊_MF1633066/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    寄语：三载同窗，今朝离别，祝同学们大展鹏程，前程似锦。
+祝福：祝福母校桃李满天下，明天更加辉煌。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18851822689
+\item 邮箱：zhangshnju@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{查春柳}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_查春柳_MG1633003/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    三年的南大生活给我带来了许多，是生命中不可磨灭的记忆，然而分别与再遇见都是常态，继续加油吧！
+在此祝南京大学以及计算机系蓬勃发展，一路攀高。一路同行的小伙伴们，如果你曾经做过一点梦，请记得想象的轮廓！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15950537522
+\item 邮箱：clzha96@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{关亚南}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_关亚南_MF1633013/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    四班毕业快乐，湖人总冠军！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：17356335835
+\item 邮箱：709455638@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{刘毅达}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_刘毅达_MF1633028/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    三年时光，成长良多，愿南大的明天，更加辉煌
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18518766703
+\item 邮箱：390825083@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{严颖丽}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_严颖丽_MF1633054/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    宇宙很大，生活更大，也许以后还有缘相见。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15720622960
+\item 邮箱：xiaokugou6262@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{黄继鹏}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_黄继鹏_MF1633016/生活照.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    每当看到这条留言，就会想起我提醒过你们要保护头发。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18963614265
+\item 邮箱：huangjipengnju@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{吴芳芳}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_吴芳芳_MF1633047/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    轻轻的我走了，正如我轻轻的来。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13770691257
+\item 邮箱：2402724397
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{叶康}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_叶康_MG1633093/生活照.jpeg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    挥手告别说珍重，希望未来的路上一帆风顺。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：18625173728
+\item 邮箱：604379334@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈晓宇}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_陈晓宇_MF1633007/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿你无虞
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15850486578
+\item 邮箱：traumcxy@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{杨润琦}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_杨润琦_MF1633055/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家都能健康工作到退休。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18652062770
+\item 邮箱：runqiyang@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王倩倩}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_王倩倩_MF1633043/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    三年的时光很短，转瞬即逝，三年又很长，带给我满满的成长与回忆。
+告别林荫校园，愿同学们在接下来的人生旅程中扬帆起航，实现心中理想。
+愿各位老师桃李满天下，春晖遍四方。
+愿母校在建设“第一个南大”的路上不断前进，再创辉煌。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15062261195
+\item 邮箱：775108786@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{任浩}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_任浩_MF1633032/生活照.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    张开翱翔的翅膀，追逐理想；荡起快乐的双桨，迎接希望。带着理想，举起希望，携着坚强，勇敢前往通向成功的大道上！愿心如所想！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 手机：18852083133
+\item 邮箱：hren\_ron@hotmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{韩旭}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_韩旭_MF1633014/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    学海无涯，不忘初心
+天下难事必作于易，天下大事必作于细
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13236550298
+\item 邮箱：457232417@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张晓聪}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张晓聪_MF1633067/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    时光飞逝，岁月如梭。山高水远，江湖再见！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13770571059
+\item 邮箱：zxc1071815540@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张超}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张超_MF1633059/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    回首往昔，当意识到今生不到的三年，转眼间就将成为刻骨铭心的记忆时，我们要以实际行动感恩师长、感恩父母、感恩学校、感恩师门。
+为此，我们将继续保持良好的精神状态，给自己的研究生生活划上一个圆满的句号。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15950590762
+\item 邮箱：1291602059@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{马明林}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_马明林_MF1633029/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    昨天，坐在924实验室窗前看地铁的时候，
+阳光还很明媚；
+今天，写下这行字的瞬间，
+已经毕业了；
+是不是系楼门前晒太阳的大黄，
+偷走了我的青春。
+我热爱你的心灵，就像今天下午的阳光。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15195763635	
+\item 邮箱：
+\item mmlin.nju@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{糜泽宇}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_糜泽宇_MF1633031/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿眉眼如初，岁月如故
+愿深情不负，傻人傻福
+愿漂泊半生，多赚点钱
+愿诸事顺利，一生顺遂
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13770573751
+\item 邮箱：742792434@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{张超}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_张超_MF1633058/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    研究生生活眼看就要结束了，心里隐隐有一种伤感，也有一种激动和憧憬的情绪。在这三年中，我结交了系里很多志趣相投的小伙伴，从他们身上学到了很多。
+我坚信，硕士毕业并不是我们的终点，而是我们迈入社会征程的起点，毕业后我们仍将时常联系，把酒言欢。
+
+方寸间，历数世上桑田沧海；时空里，细问人间暑往寒来；是朋友，星移斗转情不改；是知音，天涯海角记心怀。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18652084295
+\item 邮箱：1061971632@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王子一}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_王子一_MF1633045/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    爱南大，爱316，爱计科的小伙伴们～
+江湖路远，山高水长，大家有缘再见。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：15720617886
+\item 邮箱：zywang@smail.nju.edu.cn
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{邱丰羽}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_邱丰羽_MG1633059/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    潇洒一生，江湖再会！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：13913057138
+\item 邮箱：mrqiufengyu@outlook.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{何硙卓}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_何硙卓_MF1633015/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家都有美好前程。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18761695026
+\item 邮箱：409780998@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{宾义}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_宾义_MF1633001/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    希望以后看到这句话的时候我已经实现财务自由了，享受自己节奏的工作状态
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15651617001
+\item 邮箱：1224042959@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{吴海涛}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_吴海涛_MF1633048/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    愿大家前程似锦梦想成真！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15051841877
+\item 邮箱：506520189@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{肖琼琳}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_肖琼琳_MG1633089/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    挥手告别，杨帆远航。
+祝愿同学们青春常在，鹏程万里。
+祝愿计算机科学与技术系科研结硕果，桃李满芬芳。
+祝愿母校不忘梦想精神，砥砺前行，建设“第一个南大”。
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15005162362
+\item 邮箱：870926067@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{谭佳瑶}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_谭佳瑶_MF1633039/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    转眼间，在南大的三年时间已经过去，今年的夏天，我毕业啦！
+南大的三年是人生的一段旅程，走过了，就得离开，继续下一段旅途。但是旅途的过程我永不忘怀，一路上有朋友家人们的陪伴，带给了我一辈子不忘的回忆。
+愿南大越来越好，愿每一个南大人能够远行，看更加广阔的世界，愿每一个南大人都会优秀，有更美好的前程。
+愿你我以梦为马，诗酒趁年华，我们江湖会再见！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：15150511221
+\item 邮箱：779733063@qq.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{陈明智}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_陈明智_MF1633005/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    用青春定义我们今天的时光，用幸福计算我们灿烂的明天，用努力讨论我们未完成的梦想，用成功设置我们各自的理想，愿你毕业加油。
+
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item ﻿电话：15851817307
+\item 邮箱：chenmz1994@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{任昕悦}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/女_任昕悦_MF1633033/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    祝大家前程似锦，心想事成~
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18200401994
+\item 邮箱：xe\_fox@hotmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{黄康}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_黄康_MF1633017/生活照.jpg.png}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    For:
+四班男生：愿你出走半生，归来仍是少年
+四班女生：若有诗词藏在心，岁月从不败美人
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18362971990
+\item 邮箱：hkwany520@gmail.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+    \section{王鹏宇}
+    \begin{figure}[H]
+    	\centering
+    	 \includegraphics[width=\textwidth, height=0.35\textheight, keepaspectratio]{Class4/男_王鹏宇_MF1633042/生活照.jpg}
+    \end{figure}
+    \begin{parchment}[毕业赠言]
+    感谢南大，祝大家毕业快乐！
+    \end{parchment}
+    \begin{parchment}[联系方式]
+      \begin{itemize}
+      \item 电话：18640301679
+\item 邮箱：wangpengyu93@163.com
+
+      \end{itemize}
+    \end{parchment}
+    \FloatBarrier
+    
+
+
+\end{document}

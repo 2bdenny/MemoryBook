@@ -1,0 +1,119 @@
+\documentclass[UTF8,12pt,a4paper]{article}
+\usepackage{xeCJK}
+\usepackage{tocloft}
+\usepackage{CJKutf8}
+\usepackage[unicode]{hyperref}
+\usepackage{fontspec} % use to set font
+\usepackage{xeCJK} % seperate the english and chinese
+\usepackage{color}
+\usepackage{framed}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{datetime}
+\usepackage{geometry}
+\usepackage{placeins}
+\usepackage{multicol}
+
+\setCJKmainfont{SimSun}
+\XeTeXlinebreaklocale "zh"  % Auto linebreak for chinese
+\XeTeXlinebreakskip = 0pt plus 1pt % Auto linebreak for chinese
+
+\geometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\usetikzlibrary{decorations.pathmorphing,calc}
+\pgfmathsetseed{1}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzset{
+  normal border/.style={orange!30!black!10, decorate,
+     decoration={random steps, segment length=2.5cm, amplitude=.7mm}},
+  torn border/.style={orange!30!black!5, decorate,
+     decoration={random steps, segment length=.5cm, amplitude=1.7mm}}}
+
+\def\parchmentframe#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};  % Draw the text of the node
+ \begin{pgfonlayer}{background}  % Draw the shape behind
+ \fill[normal border]
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \end{pgfonlayer}}}
+
+\def\parchmentframetop#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};    % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]              % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]                % Add the torn lower border
+       ($(A.south east)-(0,.2)$) -- ($(A.south west)-(0,.2)$) --
+       ($(A.south west)+(0,.2)$) -- ($(A.south east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\def\parchmentframemiddle#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};   % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]             % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]               % Add the torn lower border
+       ($(A.south east)-(0,.2)$) -- ($(A.south west)-(0,.2)$) --
+       ($(A.south west)+(0,.2)$) -- ($(A.south east)+(0,.2)$) -- cycle;
+ \fill[torn border]               % Add the torn upper border
+       ($(A.north east)-(0,.2)$) -- ($(A.north west)-(0,.2)$) --
+       ($(A.north west)+(0,.2)$) -- ($(A.north east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\newenvironment{parchment}[1][Example]{%
+ \def\FrameCommand{\parchmentframe}%
+ \def\FirstFrameCommand{\parchmentframetop}%
+ \def\LastFrameCommand{\parchmentframebottom}%
+ \def\MidFrameCommand{\parchmentframemiddle}%
+ \vskip\baselineskip
+ \MakeFramed {\FrameRestore}
+ \noindent\tikz\node[inner sep=1ex, draw=black!20,fill=white,
+         anchor=west, overlay] at (0em, 2em) {\sffamily#1};\par}%
+{\endMakeFramed}
+
+\def\parchmentframebottom#1{
+\tikz{
+ \node[inner sep=2em] (A) {#1};   % Draw the text of the node
+ \begin{pgfonlayer}{background}
+ \fill[normal border]             % Draw the ``complete shape'' behind
+       (A.south east) -- (A.south west) --
+       (A.north west) -- (A.north east) -- cycle;
+ \fill[torn border]               % Add the torn upper border
+       ($(A.north east)-(0,.2)$) -- ($(A.north west)-(0,.2)$) --
+       ($(A.north west)+(0,.2)$) -- ($(A.north east)+(0,.2)$) -- cycle;
+ \end{pgfonlayer}}}
+
+\title{南京大学计算机科学与技术系2019届硕士生毕业纪念簿}
+
+\setcounter{secnumdepth}{0}
+\begin{document}
+% \begin{CJK}{UTF8}{gbsn}
+
+\maketitle
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{2019.png}
+\end{figure}
+\newpage
+\begin{multicols}{3}
+  \begingroup
+    \hypersetup{hidelinks}
+    \tableofcontents
+  \endgroup
+\end{multicols}
+\newpage
+
+%###HEREISYOURCODE###
+
+%\end{document}
