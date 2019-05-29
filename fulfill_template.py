@@ -24,7 +24,7 @@ def getStudentsInClass(cls):
     print('Class ', cls)
 
     students = []
-    clsDir = 'Class' + str(cls)
+    clsDir = 'static/Class' + str(cls)
     # 对于班级里的所有人
     for dir in listdir(clsDir):
         personDir = join(clsDir, dir)
