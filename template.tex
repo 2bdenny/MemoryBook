@@ -1,5 +1,5 @@
 % -*- coding:utf-8 -*-
-\documentclass[UTF8,12pt,a4paper]{article}
+\documentclass[UTF8,12pt,a4paper,landscape]{article}
 \usepackage{xeCJK}
 \usepackage{tocloft}
 \usepackage{CJKutf8}
@@ -21,7 +21,7 @@
 \XeTeXlinebreaklocale "zh"  % Auto linebreak for chinese
 \XeTeXlinebreakskip = 0pt plus 1pt % Auto linebreak for chinese
 
-\geometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+\geometry{left=1cm,right=1cm,top=2.5cm,bottom=2.5cm}
 \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
@@ -31,14 +31,12 @@
 \pgfsetlayers{background,main}
 
 \tikzset{
-  normal border/.style={orange!30!black!10, decorate,
-     decoration={random steps, segment length=2.5cm, amplitude=.7mm}},
-  torn border/.style={orange!30!black!5, decorate,
-     decoration={random steps, segment length=.5cm, amplitude=1.7mm}}}
+  normal border/.style={orange!30!black!10},
+  torn border/.style={orange!30!black!5}}
 
 \def\parchmentframe#1{
 \tikz{
- \node[inner sep=2em] (A) {#1};  % Draw the text of the node
+ \node[inner sep=1em] (A) {#1};  % Draw the text of the node
  \begin{pgfonlayer}{background}  % Draw the shape behind
  \fill[normal border]
        (A.south east) -- (A.south west) --
@@ -47,7 +45,7 @@
 
 \def\parchmentframetop#1{
 \tikz{
- \node[inner sep=2em] (A) {#1};    % Draw the text of the node
+ \node[inner sep=1em] (A) {#1};    % Draw the text of the node
  \begin{pgfonlayer}{background}
  \fill[normal border]              % Draw the ``complete shape'' behind
        (A.south east) -- (A.south west) --
@@ -59,7 +57,7 @@
 
 \def\parchmentframemiddle#1{
 \tikz{
- \node[inner sep=2em] (A) {#1};   % Draw the text of the node
+ \node[inner sep=1em] (A) {#1};   % Draw the text of the node
  \begin{pgfonlayer}{background}
  \fill[normal border]             % Draw the ``complete shape'' behind
        (A.south east) -- (A.south west) --
@@ -80,7 +78,7 @@
  \vskip\baselineskip
  \MakeFramed {\FrameRestore}
  \noindent\tikz\node[inner sep=1ex, draw=black!20,fill=white,
-         anchor=west, overlay] at (0em, 2em) {\sffamily#1};\par}%
+         anchor=west, overlay] at (0em, 1em) {\sffamily#1};\par}%
 {\endMakeFramed}
 
 \def\parchmentframebottom#1{
@@ -104,10 +102,10 @@
 \maketitle
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{2019.png}
+	\includegraphics[width=\textwidth]{static/2019.png}
 \end{figure}
 \newpage
-\begin{multicols}{3}
+\begin{multicols}{6}
   \begingroup
     \hypersetup{hidelinks}
     \tableofcontents

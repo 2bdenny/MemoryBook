@@ -114,11 +114,13 @@ def genTemplate(one_student):
         contact_text += '\item ' + line + '\n'
 
     text = """
-    \section{%s}
+    \setlength{\columnsep}{1cm}
+    \\begin{multicols}{2}
     \\begin{figure}[H]
     	\centering
-    	 \includegraphics[width=\\textwidth, height=0.35\\textheight, keepaspectratio]{%s}
+    	 \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
     \end{figure}
+    \section{%s}
     \\begin{parchment}[毕业赠言]
     %s
     \end{parchment}
@@ -127,8 +129,10 @@ def genTemplate(one_student):
       %s
       \end{itemize}
     \end{parchment}
+    \end{multicols}
     \FloatBarrier
-    """ % (one_student[0], one_student[1][0], one_student[2], contact_text)
+    \\newpage
+    """ % (one_student[1][0], one_student[0], one_student[2], contact_text)
     # print(text)
     return text
 
