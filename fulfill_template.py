@@ -1,9 +1,54 @@
 # -*- coding: utf-8 -*-
-import sys
+import imagesize
 import re
+import sys
 import os.path
 from os import listdir, walk
 from os.path import join, basename, isfile
+
+template_vertical_pic = """
+\setlength{\columnsep}{1cm}
+\\begin{multicols}{2}
+\\begin{figure}[H]
+    \centering
+     \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
+\end{figure}
+\section{%s}
+\\begin{parchment}[毕业赠言]
+%s
+\end{parchment}
+\\begin{parchment}[联系方式]
+  \\begin{itemize}
+  %s
+  \end{itemize}
+\end{parchment}
+\end{multicols}
+\FloatBarrier
+%\\newpage
+"""
+
+template_horizontal_pic = """
+\setlength{\columnsep}{1cm}
+\\begin{multicols}{2}
+\\begin{figure}[H]
+    \centering
+     \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
+\end{figure}
+\section{%s}
+\\vfill\\null
+\columnbreak
+\\begin{parchment}[毕业赠言]
+%s
+\end{parchment}
+\\begin{parchment}[联系方式]
+  \\begin{itemize}
+  %s
+  \end{itemize}
+\end{parchment}
+\end{multicols}
+\FloatBarrier
+\\newpage
+"""
 
 def readFile(fileDir):
     content = ''
@@ -74,7 +119,7 @@ def getStudentsInClass(cls):
                     find_pic = True
 
         if len(pics) == 0:
-            pics.append('default.png')
+            pics.append('static/default.png')
         if len(note_content) == 0:
             note_content = '404 NOT FOUND'
             # note_content = '\lipsum[5]'
@@ -113,27 +158,15 @@ def genTemplate(one_student):
             continue
         contact_text += '\item ' + line + '\n'
 
-    text = """
-    \setlength{\columnsep}{1cm}
-    \\begin{multicols}{2}
-    \\begin{figure}[H]
-    	\centering
-    	 \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
-    \end{figure}
-    \section{%s}
-    \\begin{parchment}[毕业赠言]
-    %s
-    \end{parchment}
-    \\begin{parchment}[联系方式]
-      \\begin{itemize}
-      %s
-      \end{itemize}
-    \end{parchment}
-    \end{multicols}
-    \FloatBarrier
-    \\newpage
-    """ % (one_student[1][0], one_student[0], one_student[2], contact_text)
-    # print(text)
+    pic = one_student[1][0]
+    pic_width, pic_height = imagesize.get(pic)
+    text = ''
+    if pic_width / pic_height < 1.3:
+        # text = template_vertical_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
+        text = template_vertical_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
+    else:
+        # text = template_horizontal_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
+        text = template_horizontal_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
     return text
 
 
@@ -153,5 +186,5 @@ with open('main.tex', 'w') as m:
             text = genTemplate(student)
             m.write(text)
             m.write('\n')
-            break
+            # break
     m.write(tex_tail)

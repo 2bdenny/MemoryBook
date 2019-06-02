@@ -16,6 +16,9 @@
 \usepackage{geometry}
 \usepackage{placeins}
 \usepackage{multicol}
+\usepackage[center]{titlesec}
+\titleformat{\section}
+  {\centering\normalfont\fontsize{24}{28}\bfseries}{\thesection}{1em}{}
 
 \setCJKmainfont{SimSun}
 \XeTeXlinebreaklocale "zh"  % Auto linebreak for chinese
@@ -24,6 +27,8 @@
 \geometry{left=1cm,right=1cm,top=2.5cm,bottom=2.5cm}
 \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttoctitlefont}{\hfill\Large}
+% \renewcommand{\cftaftertoctitle}{\hfill\hfill} %Note the second \hfill, it could have been any dummy text
 
 \usetikzlibrary{decorations.pathmorphing,calc}
 \pgfmathsetseed{1}
@@ -95,9 +100,9 @@
 
 \title{南京大学计算机科学与技术系2019届硕士生毕业纪念簿}
 
+\renewcommand{\contentsname}{全体毕业生名录}
 \setcounter{secnumdepth}{0}
 \begin{document}
-% \begin{CJK}{UTF8}{gbsn}
 
 \maketitle
 \begin{figure}[h]
@@ -105,14 +110,10 @@
 	\includegraphics[width=\textwidth]{static/2019.png}
 \end{figure}
 \newpage
-\begin{multicols}{6}
+\begin{multicols}{5}
   \begingroup
     \hypersetup{hidelinks}
     \tableofcontents
   \endgroup
 \end{multicols}
 \newpage
-
-%###HEREISYOURCODE###
-
-%\end{document}
