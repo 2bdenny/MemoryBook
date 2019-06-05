@@ -24,7 +24,7 @@ template_vertical_pic = """
 \end{parchment}
 \end{multicols}
 \FloatBarrier
-%\\newpage
+\\newpage
 """
 
 template_horizontal_pic = """
@@ -162,11 +162,11 @@ def genTemplate(one_student):
     pic_width, pic_height = imagesize.get(pic)
     text = ''
     if pic_width / pic_height < 1.3:
-        # text = template_vertical_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
-        text = template_vertical_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
+        text = template_vertical_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
+        # text = template_vertical_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
     else:
-        # text = template_horizontal_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
-        text = template_horizontal_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
+        text = template_horizontal_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
+        # text = template_horizontal_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
     return text
 
 
