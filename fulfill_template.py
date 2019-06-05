@@ -186,5 +186,5 @@ with open('main.tex', 'w', encoding='UTF-8') as m:
             text = genTemplate(student)
             m.write(text)
             m.write('\n')
-            # break
+            break
     m.write(tex_tail)
