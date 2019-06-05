@@ -22,7 +22,7 @@ Class*/
 *.cfg
 *.cls
 *.sty
-
+*.gz
 *.pdf
 *.png
 *.jpg

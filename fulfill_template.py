@@ -171,14 +171,14 @@ def genTemplate(one_student):
 
 
 tex_head = ''
-with open('template.tex', 'r') as temp:
+with open('template.tex', 'r', encoding='UTF-8') as temp:
     tex_head = temp.read()
 tex_tail = """
 
 \end{document}
 """
 
-with open('main.tex', 'w') as m:
+with open('main.tex', 'w', encoding='UTF-8') as m:
     m.write(tex_head)
     for i in range(1, 5):
         students = getStudentsInClass(i)
