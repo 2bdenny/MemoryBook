@@ -14,10 +14,20 @@
 \usepackage{placeins}
 \usepackage{multicol}
 \usepackage[center]{titlesec}
-\usepackage{fancyhdr}
+\usepackage{sectsty}
+
 \pagestyle{plain}  %没有页眉，页脚中部放置页码。
-\titleformat{\section}
-  {\centering\normalfont\fontsize{24}{28}\bfseries}{\thesection}{1em}{}
+\sectionfont{\fontsize{24}{28}\kaishu} % 改变正文章节字体字号
+
+%This will remove all sectional title numbering 
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+%This will remove all table of content numbering
+\makeatletter
+\let\latexl@section\l@section
+\def\l@section#1#2{\begingroup\let\numberline\@gobble\latexl@section{#1}{#2}\endgroup}
+\makeatother
 
 \setCJKmainfont{SimSun}
 \XeTeXlinebreaklocale "zh"  % Auto linebreak for chinese
