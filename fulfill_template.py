@@ -7,8 +7,6 @@ from os import listdir, walk
 from os.path import join, basename, isfile
 
 template_vertical_pic = """
-\setlength{\columnsep}{1cm}
-\\begin{multicols}{2}
 \\begin{figure}[H]
     \centering
      \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
@@ -19,33 +17,32 @@ template_vertical_pic = """
 \end{parchment}
 \\begin{parchment}[联系方式]
   \\begin{itemize}
+  \setlength\itemsep{-.1cm}
   %s
   \end{itemize}
 \end{parchment}
-\end{multicols}
 \FloatBarrier
 \\newpage
 """
 
 template_horizontal_pic = """
 \setlength{\columnsep}{1cm}
-\\begin{multicols}{2}
 \\begin{figure}[H]
     \centering
-     \includegraphics[width=0.5\\textwidth,height=1\\textheight,keepaspectratio]{%s}
+     \includegraphics[width=0.45\\textwidth,height=1\\textheight,keepaspectratio]{%s}
 \end{figure}
-\section{%s}
 \\vfill\\null
 \columnbreak
+\section{%s}
 \\begin{parchment}[毕业赠言]
 %s
 \end{parchment}
 \\begin{parchment}[联系方式]
   \\begin{itemize}
+  \setlength\itemsep{-.1cm}
   %s
   \end{itemize}
 \end{parchment}
-\end{multicols}
 \FloatBarrier
 \\newpage
 """
@@ -171,12 +168,11 @@ def genTemplate(one_student):
 
 
 tex_head = ''
+tex_tail = ''
 with open('template.tex', 'r', encoding='UTF-8') as temp:
     tex_head = temp.read()
-tex_tail = """
-
-\end{document}
-"""
+with open('template_tail.tex', 'r', encoding="UTF-8") as temp:
+    tex_tail = temp.read()
 
 with open('main.tex', 'w', encoding='UTF-8') as m:
     m.write(tex_head)
@@ -187,4 +183,10 @@ with open('main.tex', 'w', encoding='UTF-8') as m:
             m.write(text)
             m.write('\n')
             break
+        if i == 4:
+            for student in students:
+                if student[0] == '张皓':
+                    text = genTemplate(student)
+                    m.write(text)
+                    m.write('\n')
     m.write(tex_tail)

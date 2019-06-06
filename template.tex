@@ -19,7 +19,7 @@
 \pagestyle{plain}  %没有页眉，页脚中部放置页码。
 \sectionfont{\fontsize{24}{28}\kaishu} % 改变正文章节字体字号
 
-%This will remove all sectional title numbering 
+%This will remove all sectional title numbering
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
@@ -85,7 +85,8 @@
  \def\FirstFrameCommand{\parchmentframetop}%
  \def\LastFrameCommand{\parchmentframebottom}%
  \def\MidFrameCommand{\parchmentframemiddle}%
- \vskip\baselineskip
+ % \vskip \baselineskip
+ \vskip 0.2cm
  \MakeFramed {\FrameRestore}
  \noindent\tikz\node[inner sep=1ex, draw=black!20,fill=white,
          anchor=west, overlay] at (0em, 1em) {\sffamily#1};\par}%
@@ -107,8 +108,11 @@
 
 \renewcommand{\contentsname}{全体毕业生名录}
 \setcounter{secnumdepth}{0}
-\begin{document}
 
+% \titlespacing*{\section}
+% {0pt}{3cm}{3cm}
+
+\begin{document}
 \maketitle
 \begin{figure}[h]
 	\centering
@@ -121,3 +125,5 @@
 \tableofcontents
 \end{multicols}
 \newpage
+\setlength{\columnsep}{1cm}
+\begin{multicols}{2}
