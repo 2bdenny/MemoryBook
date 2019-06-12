@@ -5,6 +5,7 @@ import sys
 import os.path
 from os import listdir, walk
 from os.path import join, basename, isfile
+from pypinyin import lazy_pinyin
 
 template_vertical_pic = """
 \\begin{figure}[H]
@@ -26,7 +27,6 @@ template_vertical_pic = """
 """
 
 template_horizontal_pic = """
-\setlength{\columnsep}{1cm}
 \\begin{figure}[H]
     \centering
      \includegraphics[width=0.45\\textwidth,height=1\\textheight,keepaspectratio]{%s}
@@ -148,6 +148,7 @@ def getStudentsInClass(cls):
     return students
 
 def genTemplate(one_student):
+    # print(one_student)
     contact_text = ''
     contact_lines = one_student[3].split('\n')
     for line in contact_lines:
@@ -176,17 +177,20 @@ with open('template_tail.tex', 'r', encoding="UTF-8") as temp:
 
 with open('main.tex', 'w', encoding='UTF-8') as m:
     m.write(tex_head)
+    students = []
     for i in range(1, 5):
-        students = getStudentsInClass(i)
-        for student in students:
-            text = genTemplate(student)
-            m.write(text)
-            m.write('\n')
-            break
-        if i == 4:
-            for student in students:
-                if student[0] == '张皓':
-                    text = genTemplate(student)
-                    m.write(text)
-                    m.write('\n')
+        students.extend(getStudentsInClass(i))
+
+    sorted_students = sorted(students, key = lambda x : lazy_pinyin(x[0]))
+    for student in sorted_students:
+        text = genTemplate(student)
+        m.write(text)
+        m.write('\n')
+        #     break
+        # if i == 4:
+        #     for student in students:
+        #         if student[0] == '张皓':
+        #             text = genTemplate(student)
+        #             m.write(text)
+        #             m.write('\n')
     m.write(tex_tail)
