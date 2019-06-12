@@ -165,6 +165,11 @@ def genTemplate(one_student):
     else:
         text = template_horizontal_pic % (one_student[1][0], one_student[0], one_student[2], contact_text)
         # text = template_horizontal_pic % (one_student[1][0], '测试姓名', one_student[2], '\item 测试文字测试文字')
+
+    # if re.search('硙', text):
+    #     text = text.replace('\\section{何硙卓}', '\\section{何\heyizhuo 卓}')
+    #     print(text)
+
     return text
 
 
